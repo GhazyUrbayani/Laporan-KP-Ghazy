@@ -33,7 +33,26 @@ Pembelajaran yang paling penting pada tahap ini adalah menentukan goal sebelum m
 
 Setelah kebutuhan informasi jelas, penulis memetakan atribut tersebut ke kolom dan sumber tabel yang relevan. Tahap berikutnya adalah menentukan relasi antartabel, grain data, periode waktu, kondisi filter, flag, penanganan nilai kosong, serta kemungkinan duplikasi akibat \textit{join}. Jika satu atribut belum tersedia atau definisinya belum jelas, penulis perlu kembali ke kebutuhan bisnis untuk melakukan klarifikasi.
 
-Urutan tersebut membuat proses query tidak dimulai dari tabel yang tersedia, tetapi dari goal yang ingin dicapai dan data yang dibutuhkan untuk mencapainya. Query, transformasi, dan analisis kemudian menjadi implementasi dari kebutuhan yang sudah dipetakan.
+Urutan tersebut membuat proses query tidak dimulai dari tabel yang tersedia, tetapi dari goal yang ingin dicapai dan data yang dibutuhkan untuk mencapainya. Query, transformasi, dan analisis kemudian menjadi implementasi dari kebutuhan yang sudah dipetakan. Alur penurunan kebutuhan tersebut diringkas pada Gambar \ref{fig:goal-data}.
+
+\begin{figure}[htbp]
+\centering
+\small
+\setlength{\fboxsep}{6pt}
+\fbox{\parbox{0.78\textwidth}{\centering \textbf{Goal bisnis}\\Keputusan atau output yang ingin didukung}}
+\\[0.12cm] $\downarrow$ \\[0.12cm]
+\fbox{\parbox{0.78\textwidth}{\centering \textbf{Informasi dan metrik}\\Kriteria, ukuran, dan entitas yang diperlukan}}
+\\[0.12cm] $\downarrow$ \\[0.12cm]
+\fbox{\parbox{0.78\textwidth}{\centering \textbf{Atribut data}\\Kolom yang dibutuhkan untuk membentuk informasi}}
+\\[0.12cm] $\downarrow$ \\[0.12cm]
+\fbox{\parbox{0.78\textwidth}{\centering \textbf{Sumber data}\\Tabel, grain, periode, dan relasi antarsumber}}
+\\[0.12cm] $\downarrow$ \\[0.12cm]
+\fbox{\parbox{0.78\textwidth}{\centering \textbf{Logika pengolahan}\\Join, filter, flag, cleansing, dan transformasi}}
+\\[0.12cm] $\downarrow$ \\[0.12cm]
+\fbox{\parbox{0.78\textwidth}{\centering \textbf{Validasi dan output}\\Waterfall, duplikasi, konsistensi aturan bisnis, dan hasil akhir}}
+\caption{Alur penurunan goal menjadi kebutuhan data}
+\label{fig:goal-data}
+\end{figure}
 
 Penulis juga mempelajari pola permintaan data. Unit bisnis menyampaikan kebutuhan berdasarkan kriteria. Kriteria tersebut diterjemahkan menjadi query, kemudian hasilnya diperiksa dan dapat melalui proses cleansing sebelum digunakan. Pada tahap ini, penulis belajar bahwa validasi data perlu dilakukan sebelum membahas optimasi query atau visualisasi.
 
@@ -78,7 +97,7 @@ Analisis menggunakan metrik yang sudah tersedia pada sumber internal, seperti ju
 \subsection{Pembersihan dan Penetapan Scope}
 Sebelum membuat perbandingan, penulis memeriksa campaign yang berada di luar fokus analisis dan baris pengiriman yang tidak dapat digunakan. Penulis juga memeriksa definisi beberapa kolom yang dapat menimbulkan salah tafsir.
 
-Langkah ini penting karena rasio dapat terlihat tinggi atau rendah hanya karena scope berbeda. Karena itu, penulis menyusun asumsi dan pengecualian sebelum membuat ringkasan. Pertanyaan klarifikasi juga disiapkan untuk definisi conversion, periode atribusi, outstanding, duplikasi penerima, dan ketersediaan kelompok pembanding.
+Langkah ini penting karena rasio dapat terlihat tinggi atau rendah hanya karena scope berbeda. Perbedaan scope tersebut menjadi dasar bagi penulis untuk menyusun asumsi dan pengecualian sebelum membuat ringkasan. Pertanyaan klarifikasi juga disiapkan untuk definisi conversion, periode atribusi, outstanding, duplikasi penerima, dan ketersediaan kelompok pembanding.
 
 \subsection{Agregasi dan Perbandingan}
 Analisis dilakukan pada beberapa tingkat. Pertama, penulis menyusun ringkasan keseluruhan untuk melihat ukuran campaign dan hasil secara umum. Kedua, data dikelompokkan per produk. Ketiga, campaign dibandingkan berdasarkan conversion dan ukuran pembiayaan. Keempat, analisis melihat perbedaan mekanisme campaign dan waktu pelaksanaan pada data yang tersedia.
@@ -86,14 +105,14 @@ Analisis dilakukan pada beberapa tingkat. Pertama, penulis menyusun ringkasan ke
 Rasio conversion dihitung dari total conversion dibanding total pesan terkirim pada kelompok yang sama. Penulis tidak menggunakan rata-rata sederhana antarbaris karena volume setiap blast berbeda. Pendekatan agregasi ini menjaga agar campaign kecil tidak mempunyai bobot yang sama dengan campaign besar hanya karena berada pada satu baris.
 
 \subsection{Hasil dan Interpretasi}
-Analisis menunjukkan bahwa volume pesan dan hasil campaign tidak selalu bergerak bersama. Terdapat campaign dengan volume besar tetapi conversion relatif rendah. Terdapat juga campaign yang lebih kecil tetapi mempunyai conversion lebih baik. Karena karakter setiap produk berbeda, penulis tidak menyamakan threshold antarproduk tanpa membaca konteksnya.
+Analisis menunjukkan bahwa volume pesan dan hasil campaign tidak selalu bergerak bersama. Terdapat campaign dengan volume besar tetapi conversion relatif rendah. Terdapat juga campaign yang lebih kecil tetapi mempunyai conversion lebih baik. Perbedaan karakter setiap produk membuat penulis tidak menyamakan threshold antarproduk tanpa membaca konteksnya.
 
 Output analisis disusun menjadi ringkasan per produk, daftar campaign yang perlu diperhatikan, serta matriks tindak lanjut. Matriks tersebut digunakan untuk memisahkan campaign yang layak dipertahankan, diperluas secara hati-hati, diperbaiki, atau dievaluasi ulang. Laporan ini tidak mencantumkan nama campaign, angka performa, maupun keputusan internal yang dihasilkan dari matriks tersebut.
 
 \subsection{Batas Interpretasi}
 Penulis menemukan beberapa batas yang perlu dijelaskan sebelum hasil digunakan. Pertama, data yang tersedia tidak selalu mempunyai kelompok holdout. Tanpa kelompok pembanding, perubahan conversion tidak dapat langsung disebut sebagai akibat campaign. Kedua, tidak semua data mempunyai waktu kirim yang cukup rinci untuk analisis jam. Ketiga, faktor eksternal dan perubahan perilaku produk tidak dianalisis secara penuh.
 
-Karena itu, output pekerjaan disebut analisis deskriptif dan bahan rekomendasi. Penulis menghindari klaim kausal yang tidak didukung desain eksperimen.
+Output pekerjaan pada bagian ini diposisikan sebagai analisis deskriptif dan bahan rekomendasi. Penulis menghindari klaim kausal yang tidak didukung desain eksperimen.
 
 \section{Spatial Clustering Data Log Aplikasi Digital}
 
@@ -107,10 +126,33 @@ Data lokasi mempunyai karakter berbeda dari tabel campaign. Satu pengguna dapat 
 
 Dataset juga dibatasi pada periode dan regional tertentu agar eksperimen dapat dijalankan pada sumber daya komputasi yang tersedia. Batas tersebut membuat hasil tidak boleh dibaca sebagai gambaran seluruh nasabah atau seluruh wilayah.
 
-\subsection{Pemilihan HDBSCAN}
-Penulis menggunakan HDBSCAN sebagai metode clustering. HDBSCAN adalah pengembangan clustering berbasis kepadatan yang dapat membentuk cluster dengan kepadatan berbeda dan memisahkan noise \autocite{mcinnes2017hdbscan}. Karakter tersebut sesuai dengan data lokasi karena titik aktivitas tidak membentuk jumlah cluster yang diketahui sejak awal.
+\subsection{Pemilihan Metode dan Tuning Parameter}
+Penulis membandingkan lima metode clustering yang tersedia pada pipeline, yaitu DBSCAN, HDBSCAN, OPTICS, Agglomerative, dan ST-DBSCAN. Kelima metode dijalankan pada data yang sama lalu dinilai menggunakan metrik yang seragam, termasuk DBCV, Silhouette, Davies-Bouldin Index, dan proporsi noise. Kandidat yang tidak memenuhi batas kelayakan operasional dikeluarkan sebelum proses ranking.
 
-Penulis menjalankan beberapa konfigurasi dan membandingkan hasil menggunakan metrik clustering serta pemeriksaan visual. Parameter tidak dipilih hanya dari skor tertinggi. Penulis juga memeriksa apakah cluster yang terbentuk masih masuk akal ketika dibaca sebagai area aktivitas.
+Pemilihan metode tidak dilakukan dengan satu nilai metrik saja. Kandidat yang lolos batas kelayakan dibandingkan dengan DBCV sebagai metrik ranking utama dan Silhouette sebagai tie-break. HDBSCAN dipertahankan sebagai metode aktif setelah hasil perbandingan konsisten dengan konfigurasi yang digunakan pada pipeline.
+
+Istilah \textit{brute force} lebih tepat digunakan pada tahap tuning parameter di dalam metode, bukan pada pemilihan lima metode itu sendiri. Setelah HDBSCAN dipilih, penulis menggunakan grid search untuk mencoba seluruh kombinasi parameter yang telah ditetapkan pada ruang pencarian. Setiap kombinasi dijalankan dan dievaluasi, lalu kandidat yang melanggar batas noise atau jumlah cluster dikeluarkan. Pendekatan ini merupakan pencarian exhaustive terhadap grid parameter yang sudah didefinisikan.
+
+Parameter tidak dipilih hanya dari skor tertinggi. Penulis juga memeriksa kestabilan hasil, jumlah cluster, noise, serta apakah perubahan parameter memberi manfaat yang cukup untuk membenarkan perubahan artefak dan interpretasi bisnis. Alur pipeline dan pemilihan metode diringkas pada Gambar \ref{fig:spatial-pipeline}.
+
+\begin{figure}[htbp]
+\centering
+\small
+\setlength{\fboxsep}{6pt}
+\fbox{\parbox{0.82\textwidth}{\centering \textbf{Ingest dan feasibility}\\Data log dibaca, kolom disamakan, lalu kelayakan dataset diperiksa}}
+\\[0.12cm] $\downarrow$ \\[0.12cm]
+\fbox{\parbox{0.82\textwidth}{\centering \textbf{Benchmark lima metode}\\DBSCAN, HDBSCAN, OPTICS, Agglomerative, dan ST-DBSCAN}}
+\\[0.12cm] $\downarrow$ \\[0.12cm]
+\fbox{\parbox{0.82\textwidth}{\centering \textbf{Evaluasi seragam}\\DBCV, Silhouette, Davies-Bouldin Index, jumlah cluster, dan noise}}
+\\[0.12cm] $\downarrow$ \\[0.12cm]
+\fbox{\parbox{0.82\textwidth}{\centering \textbf{Constrained method selection}\\Filter kelayakan operasional lalu ranking kandidat}}
+\\[0.12cm] $\downarrow$ \\[0.12cm]
+\fbox{\parbox{0.82\textwidth}{\centering \textbf{Grid search HDBSCAN}\\Seluruh kombinasi parameter pada grid diuji dan dibandingkan}}
+\\[0.12cm] $\downarrow$ \\[0.12cm]
+\fbox{\parbox{0.82\textwidth}{\centering \textbf{Output agregat}\\Centroid, reverse geocoding, enrichment, dan visualisasi}}
+\caption{Alur pipeline spatial clustering dan pemilihan metode}
+\label{fig:spatial-pipeline}
+\end{figure}
 
 \subsection{Reverse Geocoding dan Agregasi}
 Setelah cluster terbentuk, penulis menghitung centroid untuk mewakili pusat cluster. Reverse geocoding dilakukan pada centroid, bukan pada setiap koordinat pengguna. Cara ini mengurangi kebutuhan untuk mengirim seluruh titik ke layanan geocoding dan menjaga output tetap berada pada tingkat agregat.
