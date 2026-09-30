@@ -19,19 +19,38 @@ Analisis campaign financing & Membaca efektivitas campaign pada beberapa tingkat
 \hline
 Spatial clustering log aplikasi & Membaca pola lokasi pada data log aplikasi digital & Pipeline clustering, hasil agregat lokasi, reverse geocoding centroid, dan visualisasi \\
 \hline
-Pembelajaran pendukung & Memahami alur data, cleansing, leads, dan konteks bisnis & Catatan kerja, validasi konsep, dan pemahaman hubungan antara data dan proses campaign \\
+Pembelajaran pendukung & Memahami lingkungan big data, alur data, cleansing, leads, dan konteks bisnis & Catatan kerja, validasi konsep, serta pemahaman hubungan antara kebutuhan bisnis, sumber data, dan proses campaign \\
 \hline
 \end{tabularx}
 \end{table}
 
 Ketiga pekerjaan utama memiliki bentuk yang berbeda, tetapi proses berpikirnya mirip. Penulis harus memahami pertanyaan bisnis, menentukan data yang relevan, memeriksa kualitas data, memilih cara pengolahan, lalu menyajikan hasil dengan batas interpretasi yang jelas.
 
-\section{Pemahaman Awal terhadap Goal, Data, dan Kebutuhan Bisnis}
-Pada awal Kerja Praktik, penulis mempelajari istilah bisnis, produk, campaign, leads, serta hubungan antar lingkungan data. Catatan kerja juga digunakan untuk memahami perbedaan fungsi Data Warehouse, Enterprise Data Lake, dan Data Mart pada konteks pekerjaan yang ditemui.
+\section{Pemahaman Awal terhadap Goal, Big Data, dan Kebutuhan Bisnis}
+
+Pada awal Kerja Praktik, penulis mempelajari istilah bisnis, produk, campaign, leads, serta hubungan antar lingkungan data. Pemahaman awal ini diperlukan sebelum penulis dapat menentukan sumber data, menyusun query, atau membaca hasil analisis.
+
+\subsection{Lingkungan Big Data dan Lapisan Data}
+
+Lingkungan data yang ditemui selama Kerja Praktik tidak hanya berupa satu basis data relasional. Penulis mempelajari aliran data yang melibatkan Data Warehouse (DWH), Enterprise Data Lake (EDL), dan Data Mart (DM). Pada konteks pekerjaan yang diamati, DWH dan EDL menjadi bagian dari sumber data pada lapisan hulu, sedangkan Data Mart menyajikan data yang lebih terarah untuk kebutuhan analisis atau unit bisnis tertentu.
+
+Perbedaan lapisan tersebut memengaruhi cara penulis mencari data. Informasi yang dibutuhkan tidak selalu tersedia pada satu tabel. Penulis perlu memahami lokasi sumber, grain data, keterkaitan antarentitas, serta apakah suatu atribut merupakan data sumber, hasil transformasi, atau hasil agregasi. Pemahaman ini menjadi dasar sebelum memilih tabel dan kolom yang digunakan pada query.
+
+Volume dan keragaman data juga membuat proses eksplorasi perlu dilakukan secara bertahap. Penulis tidak langsung menarik seluruh atribut yang tersedia. Pemeriksaan dimulai dari kebutuhan bisnis, dilanjutkan dengan pencarian sumber yang relevan, pengecekan contoh data, validasi relasi, dan pengukuran perubahan jumlah baris setelah proses pengolahan.
+
+\subsection{SQL pada RDBMS dan Lingkungan Big Data}
+
+Konsep SQL pada Relational Database Management System (RDBMS) dan pada lingkungan big data mempunyai banyak kesamaan pada tingkat bahasa, seperti penggunaan \texttt{SELECT}, \textit{join}, agregasi, filter, dan Common Table Expression. Perbedaan yang dirasakan penulis berada pada konteks eksekusinya. Pada lingkungan big data perusahaan, query dijalankan melalui Hue menggunakan HiveQL dan Impala terhadap data yang tersebar pada ekosistem data perusahaan.
+
+Kondisi tersebut membuat penulis tidak cukup hanya memikirkan apakah sintaks SQL dapat dijalankan. Penulis juga perlu mempertimbangkan jumlah data yang dibaca, urutan transformasi, cardinality pada \textit{join}, duplikasi, pemilihan atribut, dan kebutuhan validasi pada setiap tahap. Query yang secara sintaks benar masih dapat menghasilkan output yang salah apabila grain antarsumber tidak sesuai atau aturan bisnis diterjemahkan secara keliru.
+
+Pengalaman ini memperluas pemahaman penulis terhadap SQL. SQL tidak hanya digunakan sebagai bahasa untuk mengambil data dari tabel, tetapi juga sebagai bagian dari proses pengolahan data pada skala yang lebih besar dan terhubung dengan pipeline ETL.
+
+\subsection{Menurunkan Goal menjadi Kebutuhan Data}
 
 Pembelajaran yang paling penting pada tahap ini adalah menentukan goal sebelum mulai menarik data. Penulis perlu memahami keputusan atau output apa yang ingin dihasilkan. Dari goal tersebut, penulis menurunkan informasi yang dibutuhkan, metrik atau kriteria yang perlu dihitung, entitas yang terlibat, lalu atribut yang harus tersedia.
 
-Setelah kebutuhan informasi jelas, penulis memetakan atribut tersebut ke kolom dan sumber tabel yang relevan. Tahap berikutnya adalah menentukan relasi antartabel, grain data, periode waktu, kondisi filter, flag, penanganan nilai kosong, serta kemungkinan duplikasi akibat \textit{join}. Jika satu atribut belum tersedia atau definisinya belum jelas, penulis perlu kembali ke kebutuhan bisnis untuk melakukan klarifikasi.
+Setelah kebutuhan informasi jelas, penulis memetakan atribut tersebut ke kolom dan sumber tabel yang relevan. Tahap berikutnya adalah menentukan relasi antartabel, grain data, periode waktu, kondisi filter, flag, penanganan nilai kosong, serta kemungkinan duplikasi akibat \textit{join}. Jika satu atribut belum tersedia atau definisinya belum jelas, penulis kembali ke kebutuhan bisnis untuk melakukan klarifikasi.
 
 Urutan tersebut membuat proses query tidak dimulai dari tabel yang tersedia, tetapi dari goal yang ingin dicapai dan data yang dibutuhkan untuk mencapainya. Query, transformasi, dan analisis kemudian menjadi implementasi dari kebutuhan yang sudah dipetakan. Alur penurunan kebutuhan tersebut diringkas pada Gambar \ref{fig:goal-data}.
 
@@ -45,7 +64,7 @@ Urutan tersebut membuat proses query tidak dimulai dari tabel yang tersedia, tet
 \\[0.12cm] $\downarrow$ \\[0.12cm]
 \fbox{\parbox{0.78\textwidth}{\centering \textbf{Atribut data}\\Kolom yang dibutuhkan untuk membentuk informasi}}
 \\[0.12cm] $\downarrow$ \\[0.12cm]
-\fbox{\parbox{0.78\textwidth}{\centering \textbf{Sumber data}\\Tabel, grain, periode, dan relasi antarsumber}}
+\fbox{\parbox{0.78\textwidth}{\centering \textbf{Sumber data}\\DWH, EDL, Data Mart, tabel, grain, periode, dan relasi}}
 \\[0.12cm] $\downarrow$ \\[0.12cm]
 \fbox{\parbox{0.78\textwidth}{\centering \textbf{Logika pengolahan}\\Join, filter, flag, cleansing, dan transformasi}}
 \\[0.12cm] $\downarrow$ \\[0.12cm]
@@ -133,7 +152,7 @@ Pemilihan metode tidak dilakukan dengan satu nilai metrik saja. Kandidat yang lo
 
 Istilah \textit{brute force} lebih tepat digunakan pada tahap tuning parameter di dalam metode, bukan pada pemilihan lima metode itu sendiri. Setelah HDBSCAN dipilih, penulis menggunakan grid search untuk mencoba seluruh kombinasi parameter yang telah ditetapkan pada ruang pencarian. Pada dataset aktif, grid search mencakup 48 kombinasi parameter HDBSCAN yang diuji pada sampel deterministik. Setiap kombinasi dijalankan dan dievaluasi, lalu kandidat yang melanggar batas noise atau jumlah cluster dikeluarkan. Pendekatan ini merupakan pencarian exhaustive atau brute-force terhadap grid parameter yang sudah didefinisikan.
 
-Parameter tidak dipilih hanya dari skor tertinggi. Penulis juga memeriksa kestabilan hasil, jumlah cluster, noise, serta apakah perubahan parameter memberi manfaat yang cukup untuk membenarkan perubahan artefak dan interpretasi bisnis. Alur pipeline dan pemilihan metode diringkas pada Gambar \ref{fig:spatial-pipeline}.
+Parameter tidak dipilih hanya dari skor tertinggi. Penulis juga memeriksa kestabilan hasil, jumlah cluster, noise, serta apakah perubahan parameter memberi manfaat yang cukup untuk membenarkan perubahan artefak dan interpretasi bisnis. Gambar \ref{fig:spatial-pipeline} menyederhanakan alur implementasi pipeline agar bagian yang relevan untuk laporan dapat dibaca tanpa menampilkan detail internal repository.
 
 \begin{figure}[htbp]
 \centering
