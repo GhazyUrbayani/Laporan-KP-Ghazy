@@ -162,12 +162,12 @@ Hasil clustering kemudian diperkaya dengan informasi wilayah dan referensi produ
 \subsection{Visualisasi dan Kandidat Ekosistem}
 Visualisasi digunakan untuk melihat persebaran cluster, area dengan aktivitas tinggi, jarak terhadap titik referensi, dan komposisi beberapa atribut agregat. Penulis juga menyusun kandidat ekosistem berdasarkan kategori lokasi dari hasil reverse geocoding.
 
-Pada tahap ini, kategori lokasi diperlakukan sebagai interpretasi terhadap centroid. Kategori tersebut bukan atribut individu. Satu area juga dapat mempunyai lebih dari satu fungsi. Karena itu, hasil digunakan sebagai kandidat untuk ditinjau lebih lanjut, bukan sebagai label final terhadap nasabah.
+Pada tahap ini, kategori lokasi diperlakukan sebagai interpretasi terhadap centroid. Kategori tersebut bukan atribut individu. Satu area juga dapat mempunyai lebih dari satu fungsi. Hasil tersebut digunakan sebagai kandidat untuk ditinjau lebih lanjut, bukan sebagai label final terhadap nasabah.
 
 \subsection{Eksperimen Graph dan Arah SNA}
 Penulis membangun graph antarcluster berdasarkan kemunculan pengguna yang sama pada lebih dari satu cluster. Graph tersebut digunakan untuk eksplorasi hubungan antararea. Metode community detection juga diuji pada tahap eksplorasi.
 
-Eksperimen tersebut membantu penulis melihat bahwa kedekatan atau kemunculan bersama tidak cukup untuk menyatakan hubungan personal. Co-presence hanya menunjukkan dua entitas muncul pada ruang dan waktu yang berdekatan berdasarkan definisi data. Karena itu, pengembangan SNA memerlukan fitur dan validasi tambahan sebelum dapat menghasilkan influence score yang dapat dipertanggungjawabkan.
+Eksperimen tersebut membantu penulis melihat bahwa kedekatan atau kemunculan bersama tidak cukup untuk menyatakan hubungan personal. Co-presence hanya menunjukkan dua entitas muncul pada ruang dan waktu yang berdekatan berdasarkan definisi data. Pengembangan SNA masih memerlukan fitur dan validasi tambahan sebelum dapat menghasilkan influence score yang dapat dipertanggungjawabkan.
 
 \subsection{Batasan Spatial Clustering}
 Batasan utama pekerjaan ini adalah kualitas koordinat perangkat, periode observasi yang terbatas, cakupan regional yang terbatas, dan enrichment produk yang belum lengkap. Reverse geocoding juga bergantung pada kualitas data lokasi eksternal.
