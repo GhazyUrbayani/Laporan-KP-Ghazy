@@ -16,3 +16,8 @@ Cara paling mudah untuk melihat bentuk dokumen:
 ## Kerahasiaan
 
 Repository laporan hanya memuat versi yang telah disanitasi. Data mentah, identifier nasabah, query produksi lengkap, nama tabel internal, kredensial, dan output bisnis rinci tidak boleh dimasukkan ke repository ini.
+
+
+## Tanda tangan pribadi
+
+Source laporan mendukung file lokal `images/ttd-ghazy.png` untuk Lembar Pernyataan. File tanda tangan sengaja masuk `.gitignore` dan tidak disimpan di repository karena repository laporan bersifat public. Simpan file tanda tangan hanya di komputer lokal dengan nama tersebut sebelum compile PDF final.
