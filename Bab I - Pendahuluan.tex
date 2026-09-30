@@ -3,31 +3,52 @@
 \label{chap:pendahuluan}
 
 \section{Latar Belakang}
+Kegiatan campaign pada industri perbankan membutuhkan data yang dapat digunakan untuk menentukan target, menjalankan komunikasi, dan membaca hasil setelah campaign berjalan. Pada praktiknya, pekerjaan tersebut tidak berhenti pada pembuatan query. Data perlu dipahami berdasarkan konteks bisnis, diperiksa kualitasnya, diproses melalui alur yang dapat dijalankan ulang, lalu disajikan dalam bentuk yang dapat dibaca oleh unit terkait.
 
-Kegiatan campaign pada industri perbankan membutuhkan data yang dapat digunakan untuk menentukan target, menjalankan komunikasi, dan membaca hasil setelah campaign berjalan. Pekerjaan tersebut tidak berhenti pada pembuatan query. Data perlu dipahami berdasarkan konteks bisnis, diperiksa kualitasnya, diproses melalui alur yang dapat dijalankan ulang, lalu disajikan dalam bentuk yang dapat dibaca oleh unit terkait.
+PT Bank Syariah Indonesia (Persero) Tbk atau BSI resmi beroperasi pada 1 Februari 2021 setelah penggabungan tiga bank syariah. Pada 2026, nama perseroan secara administratif menjadi PT Bank Syariah Indonesia (Persero) Tbk \autocite{bsi2026}. Selama Kerja Praktik di BSI, penulis ditempatkan pada fungsi yang berkaitan dengan Campaign \& Leads Management. Posisi ini membuat penulis berhadapan langsung dengan kebutuhan bisnis yang harus diterjemahkan menjadi kebutuhan data dan analisis.
 
-Selama Kerja Praktik di PT Bank Syariah Indonesia (Persero) Tbk, penulis terlibat pada pekerjaan yang berada di antara kebutuhan bisnis dan implementasi data. Penulis mempelajari alur data untuk campaign, mengembangkan query SQL, menguji proses ETL menggunakan Talend, menyusun analisis deskriptif campaign financing, serta mengembangkan spatial clustering dari data log aplikasi digital.
+Pekerjaan penulis berkembang dalam tiga arah. Pertama, penulis mengembangkan query SQL dan alur ETL untuk kebutuhan campaign. Kedua, penulis menyusun analisis deskriptif untuk membaca efektivitas campaign financing tahun 2026. Ketiga, penulis mengembangkan spatial clustering dari data log aplikasi digital untuk membaca pola lokasi pada tingkat agregat. Ketiga pekerjaan tersebut memiliki root yang sama, yaitu bagaimana data yang besar dan tersebar dapat diolah menjadi informasi yang dapat digunakan tanpa kehilangan konteks bisnis.
 
-Tiga jenis pekerjaan tersebut dipilih sebagai isi utama laporan karena mewakili alur kerja yang penulis jalankan selama Kerja Praktik. Pekerjaan dimulai dari memahami kebutuhan, mengambil dan menyiapkan data, memeriksa hasil, lalu menyusun analisis yang dapat digunakan sebagai bahan diskusi bisnis. Fokus laporan berada pada proses dan keputusan teknis. Detail internal yang tidak diperlukan untuk menjelaskan metode tidak dicantumkan.
-
-\section{Tempat dan Waktu Pelaksanaan}
-
-Kerja Praktik dilaksanakan di PT Bank Syariah Indonesia (Persero) Tbk pada fungsi Campaign \& Leads Management. Lokasi kerja yang tercantum pada dokumen pelaksanaan Kerja Praktik berada di Jl. Cisitu Baru, Dago, Coblong, Bandung, Jawa Barat 40135.
-
-Pelaksanaan Kerja Praktik berlangsung pada periode Juli sampai September 2026. Tanggal mulai dan selesai secara administratif akan disesuaikan kembali dengan dokumen final perusahaan sebelum laporan dikumpulkan.
-
-\section{Ruang Lingkup Kerja Praktik}
-
-Ruang lingkup pekerjaan dalam laporan ini dibagi menjadi tiga bagian.
-
+\section{Tujuan Kerja Praktik}
+Tujuan Kerja Praktik ini adalah:
 \begin{enumerate}
-    \item Pengembangan query SQL dan proses ETL untuk kebutuhan data campaign.
-    \item Analisis deskriptif efektivitas campaign financing pada tingkat agregat.
-    \item Spatial clustering dan visualisasi data log aplikasi digital untuk membaca pola lokasi.
+\item memahami alur kebutuhan data pada fungsi campaign dan leads;
+\item menerapkan SQL dan ETL pada lingkungan big data perusahaan;
+\item menyusun analisis deskriptif dari data campaign;
+\item menerapkan spatial clustering pada data log aplikasi digital;
+\item melatih validasi data, komunikasi kebutuhan bisnis, dan penerapan kerahasiaan data dalam pekerjaan.
 \end{enumerate}
 
-Laporan ini tidak mencantumkan data mentah, identifier nasabah, nomor telepon, nama tabel internal, nama kolom sensitif, query produksi secara lengkap, kode campaign, maupun nilai bisnis internal yang bersifat terbatas. Nama produk atau unit hanya digunakan jika diperlukan untuk menjelaskan konteks secara umum. Angka operasional yang tidak diperlukan untuk menjelaskan metode juga tidak ditampilkan.
+\section{Tempat dan Waktu Pelaksanaan}
+Kerja Praktik dilaksanakan di PT Bank Syariah Indonesia (Persero) Tbk pada fungsi Campaign \& Leads Management. Lokasi kerja yang tercantum pada dokumen pelaksanaan Kerja Praktik berada di Jl. Cisitu Baru, Dago, Coblong, Bandung, Jawa Barat 40135.
+
+Pelaksanaan Kerja Praktik berlangsung pada periode Juli sampai September 2026. Pembagian kegiatan utama selama periode tersebut dirangkum pada Tabel \ref{tab:jadwal-kp}. Tabel ini menunjukkan urutan pekerjaan, bukan catatan harian secara rinci.
+
+\begin{table}[htbp]
+\caption{Ringkasan jadwal pekerjaan selama Kerja Praktik}
+\label{tab:jadwal-kp}
+\centering
+\begin{tabularx}{\textwidth}{|p{0.44\textwidth}|c|c|c|}
+\hline
+\textbf{Kegiatan} & \textbf{Juli} & \textbf{Agustus} & \textbf{September} \\
+\hline
+Pemahaman proses bisnis, lingkungan data, dan tools & X & X & \\
+\hline
+Pengembangan query SQL dan ETL campaign & X & X & \\
+\hline
+Analisis deskriptif campaign financing & & X & X \\
+\hline
+Spatial clustering dan visualisasi data log aplikasi & & X & X \\
+\hline
+Penyusunan laporan dan sanitasi informasi internal & & & X \\
+\hline
+\end{tabularx}
+\end{table}
+
+\section{Ruang Lingkup dan Batasan}
+Ruang lingkup laporan dibatasi pada pekerjaan yang benar-benar dilakukan penulis. Pekerjaan tersebut meliputi pengembangan query dan ETL, analisis deskriptif campaign financing, serta spatial clustering dan visualisasi. Social Network Analysis dibahas sebagai arah pengembangan karena pekerjaan tersebut belum selesai pada periode Kerja Praktik.
+
+Laporan ini tidak mencantumkan data mentah, identifier nasabah, nomor telepon, nama tabel internal, nama kolom sensitif, query produksi secara lengkap, kode campaign, maupun angka bisnis internal yang bersifat terbatas. Nama produk atau unit hanya digunakan jika diperlukan untuk menjelaskan konteks secara umum. Pembatasan ini tidak mengubah metode yang dilaporkan, tetapi mengurangi detail yang dapat mengarah pada rekonstruksi data atau proses internal.
 
 \section{Sistematika Penulisan}
-
-Bab I menjelaskan latar belakang, tempat dan waktu pelaksanaan, ruang lingkup, serta batasan penulisan. Bab II menjelaskan profil perusahaan dan unit kerja pada tingkat yang relevan terhadap kegiatan Kerja Praktik. Bab III menjelaskan pekerjaan yang dilakukan, mulai dari pengolahan data, ETL, analisis campaign, sampai spatial clustering. Bab IV berisi rangkuman pekerjaan, hasil, evaluasi diri, dan saran.
+Laporan mengikuti struktur template LaTeX terbaru yang digunakan pada mata kuliah II4090 Kerja Praktik. Bab I menjelaskan latar belakang, tujuan, tempat dan waktu, ruang lingkup, serta batasan. Bab II menjelaskan organisasi dan lingkungan kerja pada tingkat yang relevan terhadap pekerjaan penulis. Bab III menjelaskan pekerjaan yang dilakukan, mulai dari pemahaman data, pengembangan query dan ETL, analisis campaign, sampai spatial clustering. Bab IV berisi rangkuman pekerjaan, hasil, evaluasi diri, saran, dan ucapan terima kasih. Bukti kegiatan dan keterangan sanitasi informasi diletakkan pada lampiran agar isi utama tetap fokus pada pekerjaan.

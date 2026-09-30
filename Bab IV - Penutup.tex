@@ -1,16 +1,30 @@
-% ==========================================
-% BAB VII PENUTUP
-% ==========================================
 \cleardoublepage
 \chapter{PENUTUP}
 \label{chap:penutup}
+
 \section{Rangkuman Pelaksanaan Pekerjaan}
-Bagian ini menjelaskan rangkuman proses pelaksanaan pekerjaan yang telah dilakukan.
+Kerja Praktik berfokus pada tiga pekerjaan. Pekerjaan pertama adalah pengembangan query SQL dan alur ETL untuk kebutuhan campaign. Pekerjaan kedua adalah analisis deskriptif campaign financing tahun 2026. Pekerjaan ketiga adalah spatial clustering pada data log aplikasi digital.
+
+Pekerjaan tidak berjalan sebagai tiga aktivitas yang terpisah sepenuhnya. Pemahaman dari pekerjaan query membantu penulis membaca struktur data pada analisis. Proses validasi pada campaign juga terbawa ke pekerjaan clustering. Penulis menjadi lebih terbiasa memeriksa definisi, jumlah data, duplikasi, batas data, dan kemungkinan salah interpretasi sebelum membuat output.
+
 \section{Rangkuman Hasil Pekerjaan}
-Tuliskan rangkuman semua hasil pekerjaan, baik yang sudah maupun yang belum diselesaikan. Sampaikan juga hasil pengembangan keprofesian, peningkatan kompetensi, atau keahlian yang diperoleh.
+Pada pekerjaan SQL dan ETL, penulis merapikan query kompleks ke struktur CTE, memeriksa hasil join dan filter, melakukan validasi bertahap, lalu menguji integrasinya pada Talend Data Integration. Penulis juga mempelajari penjadwalan proses berkala melalui Talend Administration Center.
+
+Pada analisis campaign financing, penulis menyusun ringkasan performa berdasarkan beberapa metrik internal pada tingkat agregat. Hasil digunakan untuk membedakan campaign yang mempunyai karakter berbeda dan menyusun bahan tindak lanjut. Penulis juga mencatat batas interpretasi karena data tidak selalu mempunyai kelompok pembanding dan detail waktu yang lengkap.
+
+Pada spatial clustering, penulis membangun pipeline dari data log lokasi menuju stay point, clustering, reverse geocoding centroid, enrichment agregat, dan visualisasi. Hasil tersebut dapat digunakan untuk membaca kandidat area aktivitas. Pengembangan SNA belum diselesaikan sehingga ditempatkan sebagai pekerjaan lanjutan.
+
 \section{Evaluasi Diri}
-Tuliskan secara jujur kesan, penilaian penerapan profesionalisme dan etika profesi dalam pekerjaan, refleksi keberhasilan dan kegagalan, introspeksi diri, dan hal-hal yang dapat diperbaiki pada diri Anda pada saat pelaksanaan kerja praktik untuk perbaikan ke depan. Evaluasi diri ini ditulis dalam bentuk pernyataan-pernyataan yang positif dan tidak subyektif berdasarkan hasil penilaian pada kinerja dan kemampuan diri sendiri.
+Pada awal Kerja Praktik, penulis lebih fokus pada pertanyaan apakah query dapat berjalan dan menghasilkan output. Setelah mengerjakan beberapa kasus, penulis melihat bahwa masalah yang lebih sulit justru berada pada definisi bisnis dan kualitas data. Query yang berjalan belum tentu benar jika join menggandakan data atau filter memakai definisi yang salah.
+
+Penulis juga belajar untuk membatasi scope. Pada proyek spatial, ada banyak kemungkinan pengembangan seperti rekomendasi ekosistem, community detection, sampai influence score. Tidak semua bagian dapat diselesaikan dalam waktu Kerja Praktik. Penulis memilih menyelesaikan pipeline clustering dan menjelaskan bagian yang belum selesai daripada memaksakan klaim hasil.
+
+Hal yang masih perlu diperbaiki adalah dokumentasi keputusan sejak awal. Beberapa klarifikasi dan alasan perubahan baru ditulis setelah eksperimen berjalan. Ke depan, penulis perlu menuliskan definisi, asumsi, dan checkpoint validasi lebih cepat agar proses review lebih mudah.
+
 \section{Saran}
-Berikan saran-saran yang konstruktif untuk perusahaan tempat pelaksanaan kerja praktik, baik yang berkaitan dengan proses pelaksanaan pekerjaan maupun hal-hal lain yang relevan berdasarkan pengalaman selama pelaksanaan kerja praktik.
+Berdasarkan pengalaman penulis, pekerjaan data campaign akan lebih mudah ditelusuri jika definisi metrik dan aturan bisnis disimpan bersama dengan kebutuhan data. Hal ini dapat mengurangi perbedaan interpretasi antara pihak yang meminta data dan pihak yang mengolah data.
+
+Untuk pekerjaan analitik, penulis menyarankan agar eksperimen selalu mempunyai batas interpretasi yang ditulis sejak awal. Contohnya adalah perbedaan antara analisis deskriptif dan analisis kausal, serta perbedaan antara co-presence dan hubungan sosial pada data lokasi. Dokumentasi batas tersebut membantu mencegah insight dibaca lebih jauh dari data yang tersedia.
+
 \section{Ucapan Terima Kasih}
-Sampaikan ucapakan terima kasih kepada pihak-pihak yang relevan dalam pelaksanaan kerja praktik.
+Penulis mengucapkan terima kasih kepada Bapak M. Rasyid Aqmar selaku Pembimbing Kerja Praktik di perusahaan atas arahan selama pelaksanaan pekerjaan. Penulis juga mengucapkan terima kasih kepada Bapak Fitra Arifiansyah, S.Kom., M.T. selaku Dosen Kerja Praktik dan seluruh rekan kerja yang membantu penulis memahami proses bisnis, data, serta tools yang digunakan selama Kerja Praktik.

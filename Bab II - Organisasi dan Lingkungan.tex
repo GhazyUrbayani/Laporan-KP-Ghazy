@@ -3,29 +3,30 @@
 \label{chap:organisasi_lingkungan}
 
 \section{Profil Perusahaan}
-\label{sec:profil_perusahaan}
+PT Bank Syariah Indonesia (Persero) Tbk atau BSI resmi beroperasi pada 1 Februari 2021. BSI dibentuk melalui penggabungan PT Bank BRIsyariah Tbk, PT Bank Syariah Mandiri, dan PT Bank BNI Syariah \autocite{bsi2026}. Pada Januari 2026, perseroan memperoleh penyesuaian status administratif sehingga nama perusahaan menjadi PT Bank Syariah Indonesia (Persero) Tbk.
 
-PT Bank Syariah Indonesia (Persero) Tbk atau BSI resmi beroperasi pada 1 Februari 2021 setelah penggabungan PT Bank BRIsyariah Tbk, PT Bank Syariah Mandiri, dan PT Bank BNI Syariah. Pada 2026, nama perseroan secara administratif menjadi PT Bank Syariah Indonesia (Persero) Tbk. Visi BSI adalah menjadi Top 5 Global Islamic Bank \autocite{bsi2026}.
+Pembahasan profil perusahaan pada laporan ini dibatasi pada konteks yang berhubungan dengan pekerjaan. Penulis tidak membahas struktur bisnis bank secara keseluruhan karena Kerja Praktik berfokus pada pengolahan data dan analisis untuk campaign.
 
-BSI menyediakan layanan perbankan syariah untuk kebutuhan individu dan bisnis. Pada konteks Kerja Praktik ini, penulis tidak membahas proses perbankan secara keseluruhan. Pembahasan dibatasi pada pekerjaan data yang mendukung campaign dan leads.
+\section{Posisi Kerja Praktik}
+Penulis melaksanakan Kerja Praktik pada fungsi Campaign \& Leads Management di lingkungan Data \& AI Strategy. Fungsi ini bekerja dengan data untuk menyiapkan leads, mendukung pelaksanaan campaign, dan membaca hasil campaign.
 
-\section{Struktur Organisasi}
-\label{sec:struktur_organisasi}
+Pekerjaan pada fungsi tersebut berhubungan dengan kebutuhan unit bisnis. Kebutuhan dapat berbentuk kriteria calon target, permintaan data, atau kebutuhan analisis. Kriteria tersebut kemudian diterjemahkan menjadi logika data, diperiksa terhadap sumber yang tersedia, dan diproses sebelum digunakan lebih lanjut.
 
-Struktur organisasi perusahaan hanya dijelaskan pada tingkat yang diperlukan untuk menjelaskan posisi penulis. Penulis melaksanakan Kerja Praktik pada fungsi Campaign \& Leads Management yang bekerja dengan data untuk menyiapkan leads, menjalankan campaign, serta membaca hasil campaign.
+\section{Lingkungan Data dan Tools}
+Penulis menggunakan SQL pada lingkungan big data perusahaan melalui antarmuka Hue dengan HiveQL dan Impala. Apache Impala menyediakan antarmuka SQL untuk data pada ekosistem Hadoop dan mendukung operasi seperti \textit{join}, agregasi, \textit{distinct}, \textit{union all}, dan Common Table Expression \autocite{impala2026}. Pada konteks Kerja Praktik, tools tersebut digunakan untuk eksplorasi data, pengembangan query, validasi, serta penyiapan dataset.
 
-Pekerjaan pada fungsi tersebut berhubungan dengan beberapa fungsi data lain. Dalam praktiknya, kebutuhan dari unit bisnis perlu diterjemahkan menjadi kriteria data, kemudian diproses pada lingkungan data perusahaan sebelum hasilnya dapat digunakan untuk campaign atau analisis. Detail struktur organisasi internal tidak dicantumkan karena tidak diperlukan untuk menjelaskan pekerjaan Kerja Praktik.
+Penulis juga menggunakan Talend Data Integration untuk membangun dan menguji alur ETL. Pekerjaan yang telah diuji dapat dijadwalkan melalui Talend Administration Center. Dokumentasi Talend menjelaskan bahwa task dapat dijalankan dengan trigger berbasis waktu maupun event \autocite{talend2026}. Pada pekerjaan penulis, penjadwalan dibahas untuk proses yang berjalan secara berkala.
 
-\section{Unit Kerja}
-\label{sec:unit_kerja}
+Spreadsheet digunakan untuk pemeriksaan hasil dan analisis deskriptif. Python digunakan pada pekerjaan spatial clustering dan visualisasi. Pemilihan tools tidak dilakukan berdasarkan satu standar untuk semua pekerjaan. SQL dan Talend lebih sesuai untuk penyiapan data terstruktur dalam alur perusahaan, sedangkan Python lebih sesuai untuk eksperimen analisis dan clustering.
 
-Unit kerja penulis menangani kebutuhan data dan analisis yang berkaitan dengan campaign. Penulis mempelajari bagaimana permintaan bisnis diterjemahkan menjadi filter dan logika query, bagaimana data diproses melalui ETL, serta bagaimana hasil campaign dirangkum untuk kebutuhan evaluasi.
+\section{Alur Kerja Data pada Campaign}
+Berdasarkan pekerjaan yang diamati penulis, proses dimulai dari kebutuhan unit bisnis. Kebutuhan tersebut diterjemahkan menjadi kriteria data. Penulis kemudian memeriksa ketersediaan atribut, relasi antar sumber, kondisi filter, dan definisi bisnis sebelum membangun query.
 
-Pada pekerjaan sehari-hari, penulis menggunakan SQL pada lingkungan big data, Talend Data Integration, spreadsheet, Python, dan tools visualisasi. Penggunaan setiap tools bergantung pada jenis pekerjaan. SQL dan Talend lebih banyak digunakan untuk penyiapan data, sedangkan spreadsheet dan Python digunakan untuk analisis serta penyajian hasil.
+Hasil query tidak langsung dianggap benar hanya karena query dapat dijalankan. Penulis memeriksa jumlah baris pada beberapa tahap, duplikasi akibat \textit{join}, nilai kosong, tipe data, serta perubahan jumlah data setelah filter. Pada beberapa kebutuhan, hasil juga melalui proses cleansing dan validasi lain sebelum digunakan sebagai leads.
 
-\section{Lingkungan Kerja}
-\label{sec:lingkungan_kerja}
+Alur ini membuat penulis memahami bahwa pekerjaan data di perusahaan mempunyai dua lapisan yang harus berjalan bersama. Lapisan pertama adalah implementasi teknis. Lapisan kedua adalah definisi bisnis. Kesalahan pada salah satu lapisan dapat menghasilkan data yang secara sintaks benar tetapi salah untuk kebutuhan campaign.
 
-Lingkungan kerja menuntut penulis untuk memahami konteks bisnis sebelum menyimpulkan hasil dari data. Query yang dapat dijalankan belum tentu menghasilkan data yang sesuai dengan kebutuhan jika definisi bisnis, filter, atau relasi antar tabel belum dipahami. Karena itu, proses validasi dilakukan dengan memeriksa jumlah data, kemungkinan duplikasi, nilai kosong, hasil join, flag, dan kesesuaian definisi dengan kebutuhan awal.
+\section{Kerahasiaan dan Etika Penggunaan Data}
+Data yang digunakan selama Kerja Praktik berada pada lingkungan perusahaan. Sebagian data memuat atribut yang tidak boleh dipindahkan ke media publik. Karena itu, penulis memisahkan antara bahan kerja internal dan bahan yang aman untuk laporan akademik.
 
-Penulis juga belajar bahwa data perusahaan tidak dapat diperlakukan seperti data latihan. Beberapa informasi hanya dapat digunakan untuk kebutuhan pekerjaan dan tidak boleh dipindahkan ke media publik. Prinsip tersebut diterapkan pada laporan ini dengan membatasi pembahasan pada metode, alur kerja, dan hasil pada tingkat umum.
+Pada laporan ini, detail yang dapat mengidentifikasi nasabah atau merekonstruksi struktur data internal dihilangkan. Screenshot internal, query lengkap, nama tabel, identifier, dan nilai bisnis rinci tidak dimuat. Contoh teknis dijelaskan sebagai pola proses. Keputusan ini juga diterapkan pada lampiran.
