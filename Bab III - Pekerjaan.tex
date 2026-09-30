@@ -96,6 +96,13 @@ Penulis menggunakan beberapa pemeriksaan. Pertama, menghitung jumlah baris dan j
 
 Waterfall membantu menunjukkan titik ketika jumlah data berkurang. Jika pengurangan terlalu besar atau tidak sesuai ekspektasi, penulis kembali ke tahap sebelumnya untuk memeriksa filter. Pendekatan ini lebih mudah ditelusuri dibanding hanya memeriksa hasil akhir.
 
+\subsection{Eksplorasi Agent untuk Cleansing dan Whitelisting}
+Pada tahap validasi query, sebagian pemeriksaan masih dilakukan melalui \textit{eye-ball checking} untuk memastikan hasil data sesuai dengan kebutuhan. Pendekatan tersebut membantu menemukan anomali pada tahap awal, tetapi membutuhkan perhatian manual dan sulit dipertahankan jika volume data atau jumlah aturan bertambah.
+
+Penulis kemudian melakukan eksplorasi dan percobaan implementasi agent menggunakan Microsoft Copilot dalam lingkungan enterprise. Tujuannya adalah membantu proses cleansing dan mengurangi ketergantungan pada pemeriksaan visual manual. Eksplorasi juga diarahkan pada persiapan dataset untuk membaca pola whitelist yang berasal dari kebutuhan Unit Bisnis.
+
+Peran agent ditempatkan sebagai alat bantu pada proses validasi, bukan sebagai pengganti keputusan manusia. Output agent tetap perlu dibandingkan dengan aturan bisnis dan hasil query yang telah divalidasi. Pendekatan ini membantu penulis memahami bahwa otomasi cleansing dan whitelisting tidak cukup hanya dengan menambahkan model atau agent. Goal, aturan bisnis, sumber data, atribut yang diperiksa, serta batas tindakan otomatis perlu ditentukan lebih dahulu.
+
 \subsection{Integrasi ke Talend Data Integration}
 Setelah query diuji, pekerjaan dilanjutkan pada Talend Data Integration. Penulis memetakan output query ke struktur dataset yang digunakan pada proses berikutnya. Dataset yang dikerjakan mempunyai puluhan atribut sehingga pemeriksaan tipe data dan urutan mapping menjadi bagian dari pengujian.
 
@@ -207,6 +214,8 @@ Tabel \ref{tab:masalah-keputusan} merangkum beberapa masalah yang berulang pada 
 Join menghasilkan duplikasi & Jumlah target dan agregasi berubah & Periksa kardinalitas, identifier unik, dan waterfall sebelum melanjutkan \\
 \hline
 Definisi bisnis belum pasti & Query benar secara sintaks tetapi salah secara konteks & Klarifikasi definisi dan dokumentasikan asumsi \\
+\hline
+Eye-ball checking masih manual & Pemeriksaan sulit diskalakan dan bergantung pada pengecekan visual & Eksplorasi agent untuk membantu cleansing dan pencarian pola whitelist, dengan validasi manusia tetap dipertahankan \\
 \hline
 Volume campaign berbeda jauh & Rata-rata antarbaris memberi bobot yang tidak seimbang & Gunakan agregasi total pada kelompok yang sama \\
 \hline
