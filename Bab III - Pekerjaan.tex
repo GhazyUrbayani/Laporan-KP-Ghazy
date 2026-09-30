@@ -26,10 +26,14 @@ Pembelajaran pendukung & Memahami alur data, cleansing, leads, dan konteks bisni
 
 Ketiga pekerjaan utama memiliki bentuk yang berbeda, tetapi proses berpikirnya mirip. Penulis harus memahami pertanyaan bisnis, menentukan data yang relevan, memeriksa kualitas data, memilih cara pengolahan, lalu menyajikan hasil dengan batas interpretasi yang jelas.
 
-\section{Pemahaman Awal terhadap Data dan Kebutuhan Bisnis}
+\section{Pemahaman Awal terhadap Goal, Data, dan Kebutuhan Bisnis}
 Pada awal Kerja Praktik, penulis mempelajari istilah bisnis, produk, campaign, leads, serta hubungan antar lingkungan data. Catatan kerja juga digunakan untuk memahami perbedaan fungsi Data Warehouse, Enterprise Data Lake, dan Data Mart pada konteks pekerjaan yang ditemui.
 
-Pembelajaran awal ini penting karena nama kolom atau tabel tidak selalu cukup untuk menjelaskan arti data. Contohnya, atribut yang terlihat seperti status aktivitas, produk, atau eligibility dapat mempunyai definisi bisnis tertentu. Penulis perlu mengonfirmasi definisi tersebut sebelum menjadikannya filter atau dasar analisis.
+Pembelajaran yang paling penting pada tahap ini adalah menentukan goal sebelum mulai menarik data. Penulis perlu memahami keputusan atau output apa yang ingin dihasilkan. Dari goal tersebut, penulis menurunkan informasi yang dibutuhkan, metrik atau kriteria yang perlu dihitung, entitas yang terlibat, lalu atribut yang harus tersedia.
+
+Setelah kebutuhan informasi jelas, penulis memetakan atribut tersebut ke kolom dan sumber tabel yang relevan. Tahap berikutnya adalah menentukan relasi antartabel, grain data, periode waktu, kondisi filter, flag, penanganan nilai kosong, serta kemungkinan duplikasi akibat \textit{join}. Jika satu atribut belum tersedia atau definisinya belum jelas, penulis perlu kembali ke kebutuhan bisnis untuk melakukan klarifikasi.
+
+Urutan tersebut membuat proses query tidak dimulai dari tabel yang tersedia, tetapi dari goal yang ingin dicapai dan data yang dibutuhkan untuk mencapainya. Query, transformasi, dan analisis kemudian menjadi implementasi dari kebutuhan yang sudah dipetakan.
 
 Penulis juga mempelajari pola permintaan data. Unit bisnis menyampaikan kebutuhan berdasarkan kriteria. Kriteria tersebut diterjemahkan menjadi query, kemudian hasilnya diperiksa dan dapat melalui proses cleansing sebelum digunakan. Pada tahap ini, penulis belajar bahwa validasi data perlu dilakukan sebelum membahas optimasi query atau visualisasi.
 
