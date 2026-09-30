@@ -2,7 +2,7 @@
   "latex-workshop.latex.tools": [
     {
       "name": "xelatex",
-      "command": "xelatex",
+      "command": "/Library/TeX/texbin/xelatex",
       "args": [
         "-synctex=1",
         "-interaction=nonstopmode",
@@ -12,7 +12,7 @@
     },
     {
       "name": "biber",
-      "command": "biber",
+      "command": "/Library/TeX/texbin/biber",
       "args": [
         "%DOCFILE%"
       ]
@@ -29,5 +29,7 @@
       ]
     }
   ],
-  "latex-workshop.view.pdf.viewer": "tab"
+  "latex-workshop.latex.recipe.default": "first",
+  "latex-workshop.view.pdf.viewer": "tab",
+  "latex-workshop.view.pdf.internal.synctex.keybinding": "double-click"
 }
